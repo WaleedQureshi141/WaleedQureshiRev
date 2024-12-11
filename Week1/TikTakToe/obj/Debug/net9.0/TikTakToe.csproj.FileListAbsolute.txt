@@ -1,0 +1,15 @@
+D:\Revature\Personal\WaleedQureshiRev\Week1\TikTakToe\bin\Debug\net9.0\TikTakToe.exe
+D:\Revature\Personal\WaleedQureshiRev\Week1\TikTakToe\bin\Debug\net9.0\TikTakToe.deps.json
+D:\Revature\Personal\WaleedQureshiRev\Week1\TikTakToe\bin\Debug\net9.0\TikTakToe.runtimeconfig.json
+D:\Revature\Personal\WaleedQureshiRev\Week1\TikTakToe\bin\Debug\net9.0\TikTakToe.dll
+D:\Revature\Personal\WaleedQureshiRev\Week1\TikTakToe\bin\Debug\net9.0\TikTakToe.pdb
+D:\Revature\Personal\WaleedQureshiRev\Week1\TikTakToe\obj\Debug\net9.0\TikTakToe.GeneratedMSBuildEditorConfig.editorconfig
+D:\Revature\Personal\WaleedQureshiRev\Week1\TikTakToe\obj\Debug\net9.0\TikTakToe.AssemblyInfoInputs.cache
+D:\Revature\Personal\WaleedQureshiRev\Week1\TikTakToe\obj\Debug\net9.0\TikTakToe.AssemblyInfo.cs
+D:\Revature\Personal\WaleedQureshiRev\Week1\TikTakToe\obj\Debug\net9.0\TikTakToe.csproj.CoreCompileInputs.cache
+D:\Revature\Personal\WaleedQureshiRev\Week1\TikTakToe\obj\Debug\net9.0\TikTakToe.sourcelink.json
+D:\Revature\Personal\WaleedQureshiRev\Week1\TikTakToe\obj\Debug\net9.0\TikTakToe.dll
+D:\Revature\Personal\WaleedQureshiRev\Week1\TikTakToe\obj\Debug\net9.0\refint\TikTakToe.dll
+D:\Revature\Personal\WaleedQureshiRev\Week1\TikTakToe\obj\Debug\net9.0\TikTakToe.pdb
+D:\Revature\Personal\WaleedQureshiRev\Week1\TikTakToe\obj\Debug\net9.0\TikTakToe.genruntimeconfig.cache
+D:\Revature\Personal\WaleedQureshiRev\Week1\TikTakToe\obj\Debug\net9.0\ref\TikTakToe.dll

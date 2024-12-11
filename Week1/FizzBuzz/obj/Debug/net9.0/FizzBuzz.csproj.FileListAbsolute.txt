@@ -1,0 +1,15 @@
+D:\Revature\Personal\WaleedQureshiRev\Week1\FizzBuzz\bin\Debug\net9.0\FizzBuzz.exe
+D:\Revature\Personal\WaleedQureshiRev\Week1\FizzBuzz\bin\Debug\net9.0\FizzBuzz.deps.json
+D:\Revature\Personal\WaleedQureshiRev\Week1\FizzBuzz\bin\Debug\net9.0\FizzBuzz.runtimeconfig.json
+D:\Revature\Personal\WaleedQureshiRev\Week1\FizzBuzz\bin\Debug\net9.0\FizzBuzz.dll
+D:\Revature\Personal\WaleedQureshiRev\Week1\FizzBuzz\bin\Debug\net9.0\FizzBuzz.pdb
+D:\Revature\Personal\WaleedQureshiRev\Week1\FizzBuzz\obj\Debug\net9.0\FizzBuzz.GeneratedMSBuildEditorConfig.editorconfig
+D:\Revature\Personal\WaleedQureshiRev\Week1\FizzBuzz\obj\Debug\net9.0\FizzBuzz.AssemblyInfoInputs.cache
+D:\Revature\Personal\WaleedQureshiRev\Week1\FizzBuzz\obj\Debug\net9.0\FizzBuzz.AssemblyInfo.cs
+D:\Revature\Personal\WaleedQureshiRev\Week1\FizzBuzz\obj\Debug\net9.0\FizzBuzz.csproj.CoreCompileInputs.cache
+D:\Revature\Personal\WaleedQureshiRev\Week1\FizzBuzz\obj\Debug\net9.0\FizzBuzz.sourcelink.json
+D:\Revature\Personal\WaleedQureshiRev\Week1\FizzBuzz\obj\Debug\net9.0\FizzBuzz.dll
+D:\Revature\Personal\WaleedQureshiRev\Week1\FizzBuzz\obj\Debug\net9.0\refint\FizzBuzz.dll
+D:\Revature\Personal\WaleedQureshiRev\Week1\FizzBuzz\obj\Debug\net9.0\FizzBuzz.pdb
+D:\Revature\Personal\WaleedQureshiRev\Week1\FizzBuzz\obj\Debug\net9.0\FizzBuzz.genruntimeconfig.cache
+D:\Revature\Personal\WaleedQureshiRev\Week1\FizzBuzz\obj\Debug\net9.0\ref\FizzBuzz.dll

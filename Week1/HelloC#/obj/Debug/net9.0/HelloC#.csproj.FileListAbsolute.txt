@@ -1,0 +1,15 @@
+D:\Revature\Personal\WaleedQureshiRev\Week1\HelloC#\bin\Debug\net9.0\HelloC#.exe
+D:\Revature\Personal\WaleedQureshiRev\Week1\HelloC#\bin\Debug\net9.0\HelloC#.deps.json
+D:\Revature\Personal\WaleedQureshiRev\Week1\HelloC#\bin\Debug\net9.0\HelloC#.runtimeconfig.json
+D:\Revature\Personal\WaleedQureshiRev\Week1\HelloC#\bin\Debug\net9.0\HelloC#.dll
+D:\Revature\Personal\WaleedQureshiRev\Week1\HelloC#\bin\Debug\net9.0\HelloC#.pdb
+D:\Revature\Personal\WaleedQureshiRev\Week1\HelloC#\obj\Debug\net9.0\HelloC#.GeneratedMSBuildEditorConfig.editorconfig
+D:\Revature\Personal\WaleedQureshiRev\Week1\HelloC#\obj\Debug\net9.0\HelloC#.AssemblyInfoInputs.cache
+D:\Revature\Personal\WaleedQureshiRev\Week1\HelloC#\obj\Debug\net9.0\HelloC#.AssemblyInfo.cs
+D:\Revature\Personal\WaleedQureshiRev\Week1\HelloC#\obj\Debug\net9.0\HelloC#.csproj.CoreCompileInputs.cache
+D:\Revature\Personal\WaleedQureshiRev\Week1\HelloC#\obj\Debug\net9.0\HelloC#.sourcelink.json
+D:\Revature\Personal\WaleedQureshiRev\Week1\HelloC#\obj\Debug\net9.0\HelloC#.dll
+D:\Revature\Personal\WaleedQureshiRev\Week1\HelloC#\obj\Debug\net9.0\refint\HelloC#.dll
+D:\Revature\Personal\WaleedQureshiRev\Week1\HelloC#\obj\Debug\net9.0\HelloC#.pdb
+D:\Revature\Personal\WaleedQureshiRev\Week1\HelloC#\obj\Debug\net9.0\HelloC#.genruntimeconfig.cache
+D:\Revature\Personal\WaleedQureshiRev\Week1\HelloC#\obj\Debug\net9.0\ref\HelloC#.dll

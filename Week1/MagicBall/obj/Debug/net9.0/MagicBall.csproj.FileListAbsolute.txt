@@ -1,0 +1,15 @@
+D:\Revature\Personal\WaleedQureshiRev\Week1\MagicBall\obj\Debug\net9.0\MagicBall.GeneratedMSBuildEditorConfig.editorconfig
+D:\Revature\Personal\WaleedQureshiRev\Week1\MagicBall\obj\Debug\net9.0\MagicBall.AssemblyInfoInputs.cache
+D:\Revature\Personal\WaleedQureshiRev\Week1\MagicBall\obj\Debug\net9.0\MagicBall.AssemblyInfo.cs
+D:\Revature\Personal\WaleedQureshiRev\Week1\MagicBall\obj\Debug\net9.0\MagicBall.csproj.CoreCompileInputs.cache
+D:\Revature\Personal\WaleedQureshiRev\Week1\MagicBall\obj\Debug\net9.0\MagicBall.sourcelink.json
+D:\Revature\Personal\WaleedQureshiRev\Week1\MagicBall\bin\Debug\net9.0\MagicBall.exe
+D:\Revature\Personal\WaleedQureshiRev\Week1\MagicBall\bin\Debug\net9.0\MagicBall.deps.json
+D:\Revature\Personal\WaleedQureshiRev\Week1\MagicBall\bin\Debug\net9.0\MagicBall.runtimeconfig.json
+D:\Revature\Personal\WaleedQureshiRev\Week1\MagicBall\bin\Debug\net9.0\MagicBall.dll
+D:\Revature\Personal\WaleedQureshiRev\Week1\MagicBall\bin\Debug\net9.0\MagicBall.pdb
+D:\Revature\Personal\WaleedQureshiRev\Week1\MagicBall\obj\Debug\net9.0\MagicBall.dll
+D:\Revature\Personal\WaleedQureshiRev\Week1\MagicBall\obj\Debug\net9.0\refint\MagicBall.dll
+D:\Revature\Personal\WaleedQureshiRev\Week1\MagicBall\obj\Debug\net9.0\MagicBall.pdb
+D:\Revature\Personal\WaleedQureshiRev\Week1\MagicBall\obj\Debug\net9.0\MagicBall.genruntimeconfig.cache
+D:\Revature\Personal\WaleedQureshiRev\Week1\MagicBall\obj\Debug\net9.0\ref\MagicBall.dll

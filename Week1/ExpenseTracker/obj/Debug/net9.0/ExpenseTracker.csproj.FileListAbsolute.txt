@@ -1,0 +1,15 @@
+D:\Revature\Personal\WaleedQureshiRev\Week1\ExpenseTracker\bin\Debug\net9.0\ExpenseTracker.exe
+D:\Revature\Personal\WaleedQureshiRev\Week1\ExpenseTracker\bin\Debug\net9.0\ExpenseTracker.deps.json
+D:\Revature\Personal\WaleedQureshiRev\Week1\ExpenseTracker\bin\Debug\net9.0\ExpenseTracker.runtimeconfig.json
+D:\Revature\Personal\WaleedQureshiRev\Week1\ExpenseTracker\bin\Debug\net9.0\ExpenseTracker.dll
+D:\Revature\Personal\WaleedQureshiRev\Week1\ExpenseTracker\bin\Debug\net9.0\ExpenseTracker.pdb
+D:\Revature\Personal\WaleedQureshiRev\Week1\ExpenseTracker\obj\Debug\net9.0\ExpenseTracker.GeneratedMSBuildEditorConfig.editorconfig
+D:\Revature\Personal\WaleedQureshiRev\Week1\ExpenseTracker\obj\Debug\net9.0\ExpenseTracker.AssemblyInfoInputs.cache
+D:\Revature\Personal\WaleedQureshiRev\Week1\ExpenseTracker\obj\Debug\net9.0\ExpenseTracker.AssemblyInfo.cs
+D:\Revature\Personal\WaleedQureshiRev\Week1\ExpenseTracker\obj\Debug\net9.0\ExpenseTracker.csproj.CoreCompileInputs.cache
+D:\Revature\Personal\WaleedQureshiRev\Week1\ExpenseTracker\obj\Debug\net9.0\ExpenseTracker.sourcelink.json
+D:\Revature\Personal\WaleedQureshiRev\Week1\ExpenseTracker\obj\Debug\net9.0\ExpenseTracker.dll
+D:\Revature\Personal\WaleedQureshiRev\Week1\ExpenseTracker\obj\Debug\net9.0\refint\ExpenseTracker.dll
+D:\Revature\Personal\WaleedQureshiRev\Week1\ExpenseTracker\obj\Debug\net9.0\ExpenseTracker.pdb
+D:\Revature\Personal\WaleedQureshiRev\Week1\ExpenseTracker\obj\Debug\net9.0\ExpenseTracker.genruntimeconfig.cache
+D:\Revature\Personal\WaleedQureshiRev\Week1\ExpenseTracker\obj\Debug\net9.0\ref\ExpenseTracker.dll
