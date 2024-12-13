@@ -1,0 +1,25 @@
+/* 
+priority
+
+1. inline style
+2. id selector
+3. class, attribute
+4. element
+5. source order
+
+*/
+
+body
+{
+    background-color: bisque;
+}
+
+footer
+{
+    border: 2px solid red;
+    text-align: center;
+    margin: 5em;
+    color: white;
+    background-color: rgb(34, 34, 34);
+    padding: 2em 4em;
+}

@@ -1,0 +1,31 @@
+body
+{
+    background-color: rgb(26, 26, 119);
+}
+
+header
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: aliceblue;
+}
+
+h1
+{
+    text-align: center;
+    margin: 1em;
+    color: white;
+    background-color: rgb(34, 34, 34);
+    padding: 2em 4em;
+}
+
+.main-text
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+    color: rgb(194, 194, 255);
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <style>
+        *
+        {
+            margin: 0;
+            border: 0;
+            padding: 0;
+        }
+
+        h1
+        {
+            padding: 20px;
+            margin: 30px;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+
+        ul
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+        }
+
+        #home_link a
+        {
+            border-bottom: 2px solid black;
+            padding-bottom: 4px;
+        }
+
+        .nav_links
+        {
+            line-height: 2;
+            list-style-type: none;
+        }
+
+        form
+        {
+            width: 500px;
+            padding: 40px 0;
+            margin: 0 auto;
+            border-radius: 50px;
+            background-color: rgb(148, 153, 210, 0.205);
+        }
+
+        input
+        {
+            display: block;
+            padding: 3px 5px;
+            margin: 10px auto;
+            width: 250px;
+            background-color: transparent;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.103);
+        }
+
+        input[type="submit"]
+        {
+            background-color: black;
+            color: white;
+            margin-top: 2em;
+            border: none;
+            padding: 10px 0;
+            transition: 0.7s all;
+        }
+
+        input[type="submit"]:hover
+        {
+            background-color: rgb(255, 240, 240);
+            color: rgb(19, 19, 19);
+        }
+
+        footer
+        {
+            text-align: center;
+            margin: 5em;
+            background-color: rgb(50, 45, 45);
+            color: rgb(237, 255, 255);
+            padding: 2em 4em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li id="home_link" class="nav_links"><a>HOME</a></li>
+                <li class="nav_links">About</li>
+                <li class="nav_links">Contact</li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h1>LOGIN</h1>
+
+            <form action="">
+                <input type="text" placeholder="USERNAME">
+                <input type="password">
+                <input type="submit" value="LOGIN">
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>Waleed Mustafa Qureshi</p>
+    </footer>
+</body>
+</html>
