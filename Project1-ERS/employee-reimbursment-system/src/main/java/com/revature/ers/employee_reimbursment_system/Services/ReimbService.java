@@ -20,7 +20,7 @@ public class ReimbService
     UserRepo userRepo;
 
     // post: create new ticket
-    // accessible to everyone
+    // accessible only to users
     public Reimbursment addTicket(Reimbursment reimb)
     {
         Optional<User> user = userRepo.findById(reimb.getUser().getUserId());

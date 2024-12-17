@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.ers.employee_reimbursment_system.Models.User;
+import com.revature.ers.employee_reimbursment_system.Repositories.RoleRepo;
 import com.revature.ers.employee_reimbursment_system.Repositories.UserRepo;
 
 @Service
@@ -13,6 +14,9 @@ public class UserService
 {
     @Autowired
     UserRepo userRepo;
+
+    @Autowired
+    RoleRepo roleRepo;
 
     // post: register user
     // accessible to anyone
@@ -25,7 +29,7 @@ public class UserService
             {
                 if (user.getPassword().length() >= 8)
                 {
-                    user.setRole("USER");
+                    user.setRole(roleRepo.findById(2).get());
                     userRepo.save(user);
                     return "SAVED";
                 }
@@ -61,6 +65,16 @@ public class UserService
     public List<User> findAllUsers()
     {
         return userRepo.findAll();
+    }
+
+    // patch: change USER to ADMIN
+    // only accessible to ADMIN
+    // will only implement after all other functionality is complete
+    public User setAdminRole(int id)
+    {
+        User user = userRepo.findById(id).get();
+        user.setRole(roleRepo.findById(1).get());
+        return userRepo.save(user);
     }
 
     // delete: delete a user
