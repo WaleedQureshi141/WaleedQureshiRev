@@ -1,5 +1,6 @@
 package com.revature.ers.employee_reimbursment_system.Services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.revature.ers.employee_reimbursment_system.DTOs.UsersDTO;
 import com.revature.ers.employee_reimbursment_system.Models.AuthenticationResponse;
 import com.revature.ers.employee_reimbursment_system.Models.User;
 import com.revature.ers.employee_reimbursment_system.Repositories.RoleRepo;
@@ -84,10 +86,24 @@ public class UserService
 
     // get: view all users
     // accessible only to managers
-    public List<User> findAllUsers()
+    public List<UsersDTO> findAllUsers()
     {
-        return userRepo.findAll();
+        List<User> users = userRepo.findAll();
+        List<UsersDTO> dto = new ArrayList<>();
+
+        for (User i : users)
+        {
+            dto.add(new UsersDTO(i.getUserId(), i.getFirstName(), i.getLastName(), i.getUsername(), i.getRole()));
+        }
+
+        return dto;
     }
+
+    // old version
+    // public List<User> findAllUsers()
+    // {
+    //     return userRepo.findAll();
+    // }
 
     // patch: change USER to ADMIN
     // only accessible to ADMIN

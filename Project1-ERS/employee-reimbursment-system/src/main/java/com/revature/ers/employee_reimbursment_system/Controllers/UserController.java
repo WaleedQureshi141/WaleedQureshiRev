@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.ers.employee_reimbursment_system.DTOs.UsersDTO;
 import com.revature.ers.employee_reimbursment_system.Models.AuthenticationResponse;
 import com.revature.ers.employee_reimbursment_system.Models.User;
 import com.revature.ers.employee_reimbursment_system.Services.UserService;
@@ -59,7 +60,7 @@ public class UserController
     }
 
     @GetMapping("/admin/users")
-    public ResponseEntity<List<User>> getAllUsers()
+    public ResponseEntity<List<UsersDTO>> getAllUsers()
     {
         return new ResponseEntity<>(userService.findAllUsers(), HttpStatus.OK);
     }
