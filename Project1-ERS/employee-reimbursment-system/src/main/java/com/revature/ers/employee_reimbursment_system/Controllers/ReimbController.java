@@ -36,13 +36,13 @@ public class ReimbController
         return new ResponseEntity<>(reimbService.findReimbByUserId(id), HttpStatus.OK);
     }
     
-    @GetMapping("/pending")
+    @GetMapping("/admin/pending")
     public ResponseEntity<List<Reimbursment>> getReimbByPending()
     {
         return new ResponseEntity<>(reimbService.findByPending(), HttpStatus.OK);
     }
 
-    @PatchMapping("/{id}/{status}")
+    @PatchMapping("/admin/{id}/{status}")
     public ResponseEntity<Reimbursment> patchReimbStatus(@PathVariable int id, @PathVariable String status)
     {
         return new ResponseEntity<>(reimbService.updateStatus(id, status), HttpStatus.OK);

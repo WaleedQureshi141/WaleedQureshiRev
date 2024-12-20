@@ -3,8 +3,12 @@ package com.revature.ers.employee_reimbursment_system.Services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.revature.ers.employee_reimbursment_system.Models.AuthenticationResponse;
 import com.revature.ers.employee_reimbursment_system.Models.User;
 import com.revature.ers.employee_reimbursment_system.Repositories.RoleRepo;
 import com.revature.ers.employee_reimbursment_system.Repositories.UserRepo;
@@ -18,46 +22,64 @@ public class UserService
     @Autowired
     RoleRepo roleRepo;
 
+    @Autowired
+    PasswordEncoder encoder;
+
+    @Autowired
+    JWTService jwtService;
+
+    @Autowired
+    AuthenticationManager authenticationManager;
+
     // post: register user
     // accessible to anyone
-    public String createUser(User user)
+    public AuthenticationResponse createUser(User user)
     {
-        if (!user.getFirstName().isBlank()
-        && !user.getLastName().isBlank())
+        String token = "";
+
+        if (user.getFirstName().isBlank()
+        || user.getLastName().isBlank()
+        || !user.getPassword().matches("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d).+$")
+        || user.getPassword().length() < 8)
         {
-            if (!userRepo.findByUsername(user.getUsername()).isPresent() && !user.getUsername().isBlank())
-            {
-                if (user.getPassword().length() >= 8)
-                {
-                    user.setRole(roleRepo.findById(2).get());
-                    userRepo.save(user);
-                    return "SAVED";
-                }
-                else
-                {
-                    return "PASSWORD";
-                }
-            }
-            else
-            {
-                return "USERNAME";
-            }
+            token = "BAD_REQUEST";
+            return new AuthenticationResponse(token);
         }
-        else
+
+        if (userRepo.findByUsername(user.getUsername()).isPresent())
         {
-            return "MISSING";
+            token = "CONFLICT";
+            return new AuthenticationResponse(token);
         }
+        
+        user.setPassword(encoder.encode(user.getPassword()));
+        user.setRole(roleRepo.findById(2).get());
+
+        userRepo.save(user);
+
+        token = jwtService.generateToken(user);
+
+        return new AuthenticationResponse(token);
     }
+    
 
     // post: login
     // accessible to anyone
-    public User login(String username, String password)
+    public AuthenticationResponse login(User user)
     {
-        if (userRepo.findByUsernameAndPassword(username, password).isPresent())
-        {
-            return userRepo.findByUsernameAndPassword(username, password).get();
-        }
-        return null;
+        authenticationManager.authenticate(
+            new UsernamePasswordAuthenticationToken(
+                user.getUsername(),
+                user.getPassword()
+            )
+        );
+
+        User check = userRepo.findByUsername(user.getUsername()).orElseThrow();
+        String token = jwtService.generateToken(check);
+
+        System.out.println(token);
+
+        return new AuthenticationResponse(token);
     }
 
     // get: view all users
@@ -88,4 +110,48 @@ public class UserService
         }
         return null;
     }
+
+
+
+    // code before jwt
+
+    // register
+    // public String createUser(User user)
+    // {
+        // if (!user.getFirstName().isBlank()
+        // && !user.getLastName().isBlank())
+        // {
+        //     if (!userRepo.findByUsername(user.getUsername()).isPresent() && !user.getUsername().isBlank())
+        //     {
+        //         if (user.getPassword().length() >= 8)
+        //         {
+        //             user.setRole(roleRepo.findById(2).get());
+        //             userRepo.save(user);
+        //             return "SAVED";
+        //         }
+        //         else
+        //         {
+        //             return "PASSWORD";
+        //         }
+        //     }
+        //     else
+        //     {
+        //         return "USERNAME";
+        //     }
+        // }
+        // else
+        // {
+        //     return "MISSING";
+        // }
+    // }
+
+    // login
+    // public User login(String username, String password)
+    // {
+    //     if (userRepo.findByUsernameAndPassword(username, password).isPresent())
+    //     {
+    //         return userRepo.findByUsernameAndPassword(username, password).get();
+    //     }
+    //     return null;
+    // }
 }
