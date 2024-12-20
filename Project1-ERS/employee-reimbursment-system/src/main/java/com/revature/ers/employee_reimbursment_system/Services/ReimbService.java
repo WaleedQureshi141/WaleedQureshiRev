@@ -1,11 +1,14 @@
 package com.revature.ers.employee_reimbursment_system.Services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.revature.ers.employee_reimbursment_system.DTOs.ReimbursementsDTO;
+import com.revature.ers.employee_reimbursment_system.DTOs.UsersDTO;
 import com.revature.ers.employee_reimbursment_system.Models.Reimbursment;
 import com.revature.ers.employee_reimbursment_system.Models.User;
 import com.revature.ers.employee_reimbursment_system.Repositories.ReimbRepo;
@@ -18,32 +21,60 @@ public class ReimbService
     ReimbRepo reimbRepo;
     @Autowired
     UserRepo userRepo;
+    @Autowired
+    JWTService jwtService;
 
     // post: create new ticket
     // accessible only to users
-    public Reimbursment addTicket(Reimbursment reimb)
+    public Reimbursment addTicket(String token, Reimbursment reimb)
     {
-        Optional<User> user = userRepo.findById(reimb.getUser().getUserId());
+        String trimmed = token.substring(7);
+        Optional<User> user = userRepo.findByUsername(jwtService.extractUsername(trimmed));
         reimb.setUser(user.get());
         reimb.setStatus("PENDING");
         return reimbRepo.save(reimb);
     }
 
+    // old version
+    // public Reimbursment addTicket(Reimbursment reimb)
+    // {
+    //     Optional<User> user = userRepo.findById(reimb.getUser().getUserId());
+    //     reimb.setUser(user.get());
+    //     reimb.setStatus("PENDING");
+    //     return reimbRepo.save(reimb);
+    // }
+
     // get: viewing all tickets by a user
     // accessible to specific user and manager
-    public List<Reimbursment> findReimbByUserId(int id)
+    public List<Reimbursment> findReimbByUserId(String token)
     {
-        Optional<User> user = userRepo.findById(id);
+        String trimmed = token.substring(7);
+        Optional<User> user = userRepo.findByUsername(jwtService.extractUsername(trimmed));
         List<Reimbursment> res = reimbRepo.findByUser(user.get());
         return res;
     }
 
     // get: view all tickets with status = "PENDING"
     // accessible only to managers
-    public List<Reimbursment> findByPending()
+    public List<ReimbursementsDTO> findByPending()
     {
-        return reimbRepo.findByStatusEquals("PENDING");
+        List<Reimbursment> reimbs = reimbRepo.findByStatusEquals("PENDING");
+        List<ReimbursementsDTO> dto = new ArrayList<>();
+
+        for (Reimbursment i: reimbs)
+        {
+            UsersDTO usersDTO = new UsersDTO(i.getUser().getFirstName(), i.getUser().getLastName(), i.getUser().getUsername());
+            dto.add(new ReimbursementsDTO(i.getReimbId(), i.getDescription(), i.getAmount(), i.getStatus(), usersDTO));
+        }
+
+        return dto;
     }
+
+    // old version
+    // public List<Reimbursment> findByPending()
+    // {
+    //     return reimbRepo.findByStatusEquals("PENDING");
+    // }
 
     // patch: updates the status of a ticket
     // accessible only to managers

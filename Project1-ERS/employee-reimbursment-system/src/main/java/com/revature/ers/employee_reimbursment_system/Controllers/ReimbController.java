@@ -7,10 +7,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.ers.employee_reimbursment_system.DTOs.ReimbursementsDTO;
 import com.revature.ers.employee_reimbursment_system.Models.Reimbursment;
 import com.revature.ers.employee_reimbursment_system.Services.ReimbService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -24,20 +26,20 @@ public class ReimbController
     ReimbService reimbService;
 
     @PostMapping("/add")
-    public ResponseEntity<Reimbursment> addTicket(@RequestBody Reimbursment reim) 
+    public ResponseEntity<Reimbursment> addTicket(@RequestHeader("Authorization") String token, @RequestBody Reimbursment reim) 
     {
-        Reimbursment res = reimbService.addTicket(reim);
+        Reimbursment res = reimbService.addTicket(token, reim);
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<List<Reimbursment>> getReimbById(@PathVariable int id) 
+    @GetMapping("/reimbs")
+    public ResponseEntity<List<Reimbursment>> getReimbById(@RequestHeader("Authorization") String token) 
     {
-        return new ResponseEntity<>(reimbService.findReimbByUserId(id), HttpStatus.OK);
+        return new ResponseEntity<>(reimbService.findReimbByUserId(token), HttpStatus.OK);
     }
     
     @GetMapping("/admin/pending")
-    public ResponseEntity<List<Reimbursment>> getReimbByPending()
+    public ResponseEntity<List<ReimbursementsDTO>> getReimbByPending()
     {
         return new ResponseEntity<>(reimbService.findByPending(), HttpStatus.OK);
     }
