@@ -67,7 +67,7 @@ public class UserService
 
     // post: login
     // accessible to anyone
-    public AuthenticationResponse login(User user)
+    public String login(User user)
     {
         authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(
@@ -81,7 +81,7 @@ public class UserService
 
         System.out.println(token);
 
-        return new AuthenticationResponse(token);
+        return token;
     }
 
     // get: view all users

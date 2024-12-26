@@ -1,5 +1,7 @@
 package com.revature.ers.employee_reimbursment_system.Config;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +15,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
 
 import com.revature.ers.employee_reimbursment_system.Filter.JwtAuthenticationFilter;
 import com.revature.ers.employee_reimbursment_system.Services.UserDetailsImpl;
@@ -31,12 +35,26 @@ public class SecurityConfig
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception
     {
         return http
+            .cors(c -> 
+            {
+                CorsConfigurationSource source = req ->
+                {
+                    CorsConfiguration configuration = new CorsConfiguration();
+                    configuration.setAllowedOrigins(List.of("http://localhost:5173"));
+                    configuration.setAllowedMethods(List.of("GET", "POST", "PATCH", "DELETE"));
+                    configuration.setAllowedHeaders(List.of("*"));
+                    configuration.setAllowCredentials(true);
+
+                    return configuration;
+                };
+                c.configurationSource(source);
+            })
             .csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests(
                 req -> req.requestMatchers("/user/auth/**")
                 .permitAll()
                 .requestMatchers("/user/admin/**", "/reimb/admin/**").hasAuthority("ADMIN")
-                .requestMatchers("/reimb/add").hasAuthority("USER")
+                .requestMatchers("/reimb/**").hasAuthority("USER")
                 .anyRequest()
                 .authenticated()
             ).userDetailsService(userDetailsImpl)

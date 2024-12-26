@@ -5,7 +5,7 @@ export const addTicketFormSchema = z.object(
         description:
         z.string().max(150),
         amount:
-        z.number().gt(0),
+        z.string(),
     }
 );
 

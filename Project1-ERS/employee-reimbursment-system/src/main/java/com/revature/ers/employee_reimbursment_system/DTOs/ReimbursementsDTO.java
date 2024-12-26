@@ -14,4 +14,12 @@ public class ReimbursementsDTO
     private float amount;
     private String status;
     private UsersDTO users;
+
+    public ReimbursementsDTO(int id, String description, float amount, String status)
+    {
+        this.id = id;
+        this.description = description;
+        this.amount = amount;
+        this.status = status;
+    }
 }

@@ -24,8 +24,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 
 @RestController
+@CrossOrigin("http://localhost:5173/")
 @RequestMapping("/user")
-@CrossOrigin("*")
 public class UserController 
 {
     @Autowired
@@ -54,7 +54,7 @@ public class UserController
     }
 
     @PostMapping("/auth/login")
-    public ResponseEntity<AuthenticationResponse> login(@RequestBody User user)
+    public ResponseEntity<String> login(@RequestBody User user)
     {
         return new ResponseEntity<>(userService.login(user), HttpStatus.OK);
     }

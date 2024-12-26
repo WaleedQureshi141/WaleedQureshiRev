@@ -44,14 +44,22 @@ public class ReimbService
     //     return reimbRepo.save(reimb);
     // }
 
-    // get: viewing all tickets by a user
-    // accessible to specific user and manager
-    public List<Reimbursment> findReimbByUserId(String token)
+    // get: viewing all tickets of a user
+    // accessible to specific user
+    public List<ReimbursementsDTO> findReimbByUserId(String token)
     {
         String trimmed = token.substring(7);
         Optional<User> user = userRepo.findByUsername(jwtService.extractUsername(trimmed));
-        List<Reimbursment> res = reimbRepo.findByUser(user.get());
-        return res;
+        List<Reimbursment> reimbs = reimbRepo.findByUser(user.get());
+
+        List<ReimbursementsDTO> reimbsDTO = new ArrayList<>();
+
+        for (Reimbursment i : reimbs)
+        {
+            reimbsDTO.add(new ReimbursementsDTO(i.getReimbId(), i.getDescription(), i.getAmount(), i.getStatus()));
+        }
+
+        return reimbsDTO;
     }
 
     // get: view all tickets with status = "PENDING"

@@ -5,9 +5,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { FormField, FormItem, FormLabel, FormControl, FormMessage, Form } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useLogin } from "./hooks/use-login";
 
 export function LoginForm()
 {
+    const {mutate: login, isPending} = useLogin();
+
     // 1. Define your form.
     const form = useForm<LoginSchema>(
         {
@@ -20,10 +23,9 @@ export function LoginForm()
     )
 
     // 2. Define a submit handler.
-    function onSubmit(values: LoginSchema) {
-        // Do something with the form values.
-        // ✅ This will be type-safe and validated.
-        console.log(values);
+    function onSubmit(values: LoginSchema) 
+    {
+        login(values);
     }
  
     return (
@@ -66,8 +68,8 @@ export function LoginForm()
                                 )}
                             />
                             <div className="flex justify-center gap-9 pt-8" >
-                                <Button type="submit">LOGIN</Button>
-                                <Button variant={"destructive"} type="submit">REGISTER INSTEAD</Button>
+                                <Button type="submit" disabled={isPending}>LOGIN</Button>
+                                <Button variant={"destructive"}>REGISTER INSTEAD</Button>
                             </div>
                         </form>
                     </Form>

@@ -6,25 +6,27 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { addTicketFormSchema, AddTicketSchema } from "../schemas/add-ticket-schema";
 import { Textarea } from "@/components/ui/textarea";
+import { useAddTicket } from "./hooks/use-add-ticket";
 
 export function AddTicketForm()
 {
+    const { mutate: addTicket, isPending} = useAddTicket();
+
     // 1. Define your form.
     const form = useForm<AddTicketSchema>(
         {
             resolver: zodResolver(addTicketFormSchema),
             defaultValues: {
                 description: "",
-                amount: 0.0,
+                amount: "0.0",
             },
         }
     )
 
     // 2. Define a submit handler.
-    function onSubmit(values: AddTicketSchema) {
-        // Do something with the form values.
-        // ✅ This will be type-safe and validated.
-        console.log(values);
+    function onSubmit(values: AddTicketSchema) 
+    {
+        addTicket(values);
     }
  
     return (
@@ -72,8 +74,8 @@ export function AddTicketForm()
                                 )}
                             />
                             <div className="flex justify-center gap-9 pt-8" >
-                                <Button type="submit">LOGIN</Button>
-                                <Button variant={"destructive"} type="submit">REGISTER INSTEAD</Button>
+                                <Button type="submit" disabled={isPending}>ADD</Button>
+                                <Button variant={"destructive"} type="reset">CANCEL</Button>
                             </div>
                         </form>
                     </Form>

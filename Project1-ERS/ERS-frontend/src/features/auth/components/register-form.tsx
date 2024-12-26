@@ -12,9 +12,13 @@ import { registerFormSchema, RegisterSchema } from "../schemas/register-schema";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useRegister } from "./hooks/use-register";
+import { toast } from "sonner";
     
 export function RegisterForm()
 {
+    const {mutate: register, isPending} = useRegister();
+
     // 1. Define your form.
     const form = useForm<RegisterSchema>(
         {
@@ -24,24 +28,22 @@ export function RegisterForm()
                 lastName: "",
                 username: "",
                 password: "",
+                confirm_password: "",
             },
         }
     )
 
     // 2. Define a submit handler.
-    function onSubmit(values: RegisterSchema) {
-        // Do something with the form values.
-        // ✅ This will be type-safe and validated.
-        if (values.password != values.password)
+    function onSubmit(values: RegisterSchema) 
+    {
+        if (values.confirm_password !== values.password)
         {
-            form.setError("confirm_password", 
-                {
-                    message: "Passwords Do Not Match",
-                }
-            );
+            form.setError("confirm_password", {message: "PASSWORDS DO NOT MATCH"});
             return;
         }
-        console.log(values);
+
+        register(values);
+        form.reset();
     }
  
     return (
@@ -121,16 +123,16 @@ export function RegisterForm()
                                     <FormItem>
                                     <FormLabel>Confirm Password</FormLabel>
                                     <FormControl>
-                                        <Input type="password" placeholder="Confirm Password" {...field} />
+                                        <Input type="password" placeholder="Confirm Password" {...field}/>
                                     </FormControl>
                                     {/* <FormDescription>This is your public display name.</FormDescription> */}
                                     <FormMessage />
                                     </FormItem>
                                 )}
                             />
-                            <div className="flex justify-center gap-9" >
-                                <Button type="submit">REGISTER</Button>
-                                <Button variant={"destructive"} type="submit">LOGIN INSTEAD</Button>
+                            <div className="flex justify-center gap-9">
+                                <Button type="submit" disabled={isPending}>REGISTER</Button>
+                                <Button variant={"destructive"} disabled={isPending}>LOGIN INSTEAD</Button>
                             </div>
                         </form>
                     </Form>
