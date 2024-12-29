@@ -10,14 +10,15 @@ export const authInstance = axios.create(
     }
 );
 
+export const userInstance = axios.create(
+    {
+        baseURL: import.meta.env.VITE_API_USER,
+    }
+);
+
 export const userAdminInstance = axios.create(
     {
         baseURL: import.meta.env.VITE_API_USER_ADMIN,
-        withCredentials: true,
-        headers:
-        {
-            "Content-Type": "application/json"
-        }
     }
 );
 

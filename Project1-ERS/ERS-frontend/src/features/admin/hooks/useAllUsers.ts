@@ -1,19 +1,19 @@
-import { reimbInstance } from "@/lib/axios-config";
 import { useQuery, useQueryClient, UseQueryResult } from "@tanstack/react-query";
-import { Reimbs } from "../column-defs/user-tickets-def";
+import { AllUsers } from "../column-defs/all-users-defs";
+import { userAdminInstance } from "@/lib/axios-config";
 
-export function useUserTickets(): UseQueryResult<Reimbs[]>
-// {id: number, description: string, amount: number, status: string}>
+export function useAllUsers(): UseQueryResult<AllUsers[]>
 {
     const queryClient = useQueryClient();
 
-    return useQuery<Reimbs[]>(
+    return useQuery<AllUsers[]>(
         {
-            queryKey: ["user-reimbs"],
+            queryKey: ["all-users"],
             queryFn: async () =>
             {
                 const token = "Bearer " + queryClient.getQueryData(["auth"]);
-                const res = await reimbInstance.get("/reimbs", 
+                console.log();
+                const res = await userAdminInstance.get("/users", 
                     {
                         headers:
                         {
@@ -23,11 +23,7 @@ export function useUserTickets(): UseQueryResult<Reimbs[]>
                         }
                     }
                 );
-                // queryClient.invalidateQueries(
-                //     {
-                //         queryKey: ["auth"]
-                //     }
-                // );
+                // console.log(queryClient.getQueryData(["auth"]));
                 return res.data;
             }
         }

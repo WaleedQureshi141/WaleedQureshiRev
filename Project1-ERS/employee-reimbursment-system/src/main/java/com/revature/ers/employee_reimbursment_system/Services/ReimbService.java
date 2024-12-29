@@ -72,7 +72,13 @@ public class ReimbService
         for (Reimbursment i: reimbs)
         {
             UsersDTO usersDTO = new UsersDTO(i.getUser().getFirstName(), i.getUser().getLastName(), i.getUser().getUsername());
-            dto.add(new ReimbursementsDTO(i.getReimbId(), i.getDescription(), i.getAmount(), i.getStatus(), usersDTO));
+            dto.add(new ReimbursementsDTO(
+                i.getReimbId(), 
+                i.getDescription(), 
+                i.getAmount(), 
+                i.getStatus(), 
+                usersDTO.getFirstName() + " " + usersDTO.getLastName(),
+                usersDTO.getUsername()));
         }
 
         return dto;

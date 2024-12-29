@@ -42,7 +42,8 @@ public class UserService
         if (user.getFirstName().isBlank()
         || user.getLastName().isBlank()
         || !user.getPassword().matches("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d).+$")
-        || user.getPassword().length() < 8)
+        || user.getPassword().length() < 8
+        || user.getUsername().isBlank())
         {
             token = "BAD_REQUEST";
             return new AuthenticationResponse(token);
@@ -93,8 +94,22 @@ public class UserService
 
         for (User i : users)
         {
-            dto.add(new UsersDTO(i.getUserId(), i.getFirstName(), i.getLastName(), i.getUsername(), i.getRole()));
+            dto.add(new UsersDTO(i.getUserId(), i.getFirstName(), i.getLastName(), i.getUsername(), i.getRole().getRole()));
         }
+
+        return dto;
+    }
+
+    // get: user info display header
+    // accessible to everyone
+    public UsersDTO findUser(String token)
+    {
+        String check = jwtService.extractUsername(token.substring(7));
+        User user = userRepo.findByUsername(check).get();
+
+        UsersDTO dto = new UsersDTO(
+            user.getFirstName(), user.getLastName(), user.getUsername(), user.getRole().getRole()
+        );
 
         return dto;
     }

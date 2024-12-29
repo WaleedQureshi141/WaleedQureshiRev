@@ -2,10 +2,13 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { AddTicketSchema } from "../../schemas/add-ticket-schema";
 import { reimbInstance } from "@/lib/axios-config";
 import { toast } from "sonner";
+import { useRouter } from "@tanstack/react-router";
+import { useVisibility } from "./helpers/use-visibility";
 
 export function useAddTicket()
 {
     const queryClient = useQueryClient();
+    const router = useRouter();
 
     return useMutation(
         {
@@ -26,7 +29,13 @@ export function useAddTicket()
             },
             onSuccess: () =>
             {
+                queryClient.invalidateQueries(
+                    {
+                        queryKey: ["user-reimbs"]
+                    }
+                );
                 toast.message("Ticket Added");
+                router.navigate({to:"/reimb/reimb-table"});
             }
         }
     )

@@ -1,19 +1,18 @@
-import { reimbInstance } from "@/lib/axios-config";
 import { useQuery, useQueryClient, UseQueryResult } from "@tanstack/react-query";
-import { Reimbs } from "../column-defs/user-tickets-def";
+import { PendingReimbs } from "../column-defs/pending-reimb-defs";
+import { reimbAdminInstance } from "@/lib/axios-config";
 
-export function useUserTickets(): UseQueryResult<Reimbs[]>
-// {id: number, description: string, amount: number, status: string}>
+export function usePending(): UseQueryResult<PendingReimbs[]>
 {
     const queryClient = useQueryClient();
 
-    return useQuery<Reimbs[]>(
+    return useQuery<PendingReimbs[]>(
         {
-            queryKey: ["user-reimbs"],
+            queryKey: ["pending-reimbs"],
             queryFn: async () =>
             {
                 const token = "Bearer " + queryClient.getQueryData(["auth"]);
-                const res = await reimbInstance.get("/reimbs", 
+                const res = await reimbAdminInstance.get("/pending", 
                     {
                         headers:
                         {
@@ -23,11 +22,7 @@ export function useUserTickets(): UseQueryResult<Reimbs[]>
                         }
                     }
                 );
-                // queryClient.invalidateQueries(
-                //     {
-                //         queryKey: ["auth"]
-                //     }
-                // );
+
                 return res.data;
             }
         }

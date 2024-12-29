@@ -13,7 +13,8 @@ public class ReimbursementsDTO
     private String description;
     private float amount;
     private String status;
-    private UsersDTO users;
+    private String name;
+    private String username;
 
     public ReimbursementsDTO(int id, String description, float amount, String status)
     {

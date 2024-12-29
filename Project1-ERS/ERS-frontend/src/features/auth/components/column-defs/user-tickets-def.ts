@@ -20,6 +20,6 @@ export const reimbColumns: ColumnDef<Reimbs>[] =
     },
     {
         accessorKey: "status",
-        header: "STATUS",
+        header: "STATUS"
     },
 ]

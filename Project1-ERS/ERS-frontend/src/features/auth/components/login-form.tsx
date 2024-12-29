@@ -6,6 +6,7 @@ import { FormField, FormItem, FormLabel, FormControl, FormMessage, Form } from "
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useLogin } from "./hooks/use-login";
+import { Link } from "@tanstack/react-router";
 
 export function LoginForm()
 {
@@ -33,7 +34,7 @@ export function LoginForm()
             <Card className="w-[350px] dark text-white shadow-lg">
                 <CardHeader>
                     <CardTitle>LOGIN</CardTitle>
-                    {/* <CardDescription>Create A New Account</CardDescription> */}
+                    <CardDescription>Enter Your Login Information</CardDescription>
                 </CardHeader>
                 <CardContent>
                     <Form {...form}>
@@ -69,7 +70,9 @@ export function LoginForm()
                             />
                             <div className="flex justify-center gap-9 pt-8" >
                                 <Button type="submit" disabled={isPending}>LOGIN</Button>
-                                <Button variant={"destructive"}>REGISTER INSTEAD</Button>
+                                <Button variant={"destructive"} disabled={isPending}>
+                                    <Link to={"/auth/register"}>REGISTER INSTEAD</Link>
+                                </Button>
                             </div>
                         </form>
                     </Form>

@@ -7,10 +7,14 @@ import { Button } from "@/components/ui/button";
 import { addTicketFormSchema, AddTicketSchema } from "../schemas/add-ticket-schema";
 import { Textarea } from "@/components/ui/textarea";
 import { useAddTicket } from "./hooks/use-add-ticket";
+import { useRouter } from "@tanstack/react-router";
+import { useState } from "react";
+import { useVisibility } from "./hooks/helpers/use-visibility";
 
 export function AddTicketForm()
 {
     const { mutate: addTicket, isPending} = useAddTicket();
+    const router = useRouter();
 
     // 1. Define your form.
     const form = useForm<AddTicketSchema>(
@@ -27,6 +31,11 @@ export function AddTicketForm()
     function onSubmit(values: AddTicketSchema) 
     {
         addTicket(values);
+    }
+
+    function route()
+    {
+        router.navigate({to:"/reimb/reimb-table"})
     }
  
     return (
@@ -50,7 +59,7 @@ export function AddTicketForm()
                                     <FormControl>
                                         <Textarea placeholder="Describe your reason for the ticket..." 
                                         className="h-28"
-                                        maxLength={150} 
+                                        maxLength={75} 
                                         {...field}/>
                                     </FormControl>
                                     {/* <FormDescription>This is your public display name.</FormDescription> */}
@@ -75,7 +84,7 @@ export function AddTicketForm()
                             />
                             <div className="flex justify-center gap-9 pt-8" >
                                 <Button type="submit" disabled={isPending}>ADD</Button>
-                                <Button variant={"destructive"} type="reset">CANCEL</Button>
+                                <Button type="button" variant={"destructive"} onClick={route}>CANCEL</Button>
                             </div>
                         </form>
                     </Form>

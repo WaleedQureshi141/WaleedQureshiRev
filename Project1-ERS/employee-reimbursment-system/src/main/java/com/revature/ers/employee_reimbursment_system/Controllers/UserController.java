@@ -15,11 +15,14 @@ import com.revature.ers.employee_reimbursment_system.Models.User;
 import com.revature.ers.employee_reimbursment_system.Services.UserService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 
@@ -64,6 +67,13 @@ public class UserController
     {
         return new ResponseEntity<>(userService.findAllUsers(), HttpStatus.OK);
     }
+
+    @GetMapping("/user")
+    public ResponseEntity<UsersDTO> getUser(@RequestHeader("Authorization") String token) 
+    {
+        return new ResponseEntity<>(userService.findUser(token), HttpStatus.OK);
+    }
+    
 
     @PatchMapping("/admin/setadmin/{id}")
     public ResponseEntity<User> setAdminRole(@PathVariable int id)

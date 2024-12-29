@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useRegister } from "./hooks/use-register";
 import { toast } from "sonner";
+import { Link } from "@tanstack/react-router";
     
 export function RegisterForm()
 {
@@ -130,9 +131,11 @@ export function RegisterForm()
                                     </FormItem>
                                 )}
                             />
-                            <div className="flex justify-center gap-9">
+                            <div className="flex justify-center gap-9 pt-5">
                                 <Button type="submit" disabled={isPending}>REGISTER</Button>
-                                <Button variant={"destructive"} disabled={isPending}>LOGIN INSTEAD</Button>
+                                <Button variant={"destructive"} disabled={isPending}>
+                                    <Link to="/">LOGIN INSTEAD</Link>
+                                </Button>
                             </div>
                         </form>
                     </Form>
