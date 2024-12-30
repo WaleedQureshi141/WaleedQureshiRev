@@ -4,11 +4,11 @@ import { usePending } from "../hooks/usePending";
 
 export function PendingTable()
 {
-    const {data} = usePending();
+    // const {data} = usePending();
         
-    return (
-        <div className="container mx-auto py-10">
-            <DataTable columns={pendingColumns} data={data || []}/>
-        </div>
-    )
+    // return (
+    //     <div className="container mx-auto py-10">
+    //         <DataTable columns={pendingColumns} data={data || []}/>
+    //     </div>
+    // )
 }

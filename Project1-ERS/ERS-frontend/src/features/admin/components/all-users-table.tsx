@@ -4,11 +4,11 @@ import { useAllUsers } from "../hooks/useAllUsers";
 
 export function AllUsersTable()
 {
-    const {data} = useAllUsers();
+    // const {data} = useAllUsers();
         
-    return (
-        <div className="container mx-auto py-10">
-            <DataTable columns={allUsersColumns} data={data || []}/>
-        </div>
-    )
+    // return (
+    //     <div className="container mx-auto py-10">
+    //         <DataTable columns={allUsersColumns} data={data || []}/>
+    //     </div>
+    // )
 }

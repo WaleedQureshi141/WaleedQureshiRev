@@ -1,6 +1,9 @@
 import { Button } from '@/components/ui/button'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
+import { DataTable } from '@/components/ui/data-table'
 import { AddTicketForm } from '@/features/auth/components/add-ticket-form'
+import { reimbColumns } from '@/features/auth/components/column-defs/user-tickets-def'
+import { useUserTickets } from '@/features/auth/components/hooks/use-user-tickets'
 import { UserInfo } from '@/features/auth/components/user-info'
 import { UserTicketsTable } from '@/features/auth/components/user-tickets-table'
 import { useQueryClient } from '@tanstack/react-query'
@@ -12,6 +15,7 @@ export const Route = createLazyFileRoute('/_auth/reimb/reimb-table')({
 
 function RouteComponent() 
 {
+  const {data} = useUserTickets();
   const router = useRouter();
   // const queryClient = useQueryClient();
 
@@ -27,9 +31,9 @@ function RouteComponent()
         <AddTicketForm />
       </div> */}
       <UserInfo />
+      {/* <br /> */}
       <br />
-      <br />
-      <Card className="w-10/12 place-self-center">
+      <Card className="w-screen place-self-center">
         <CardHeader className="justify-self-center">
           <CardTitle>
             ALL TICKETS
@@ -39,7 +43,10 @@ function RouteComponent()
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <UserTicketsTable />
+          {/* <UserTicketsTable /> */}
+          <div className="container mx-auto py-10">
+            <DataTable columns={reimbColumns} data={data || []}/>
+          </div>
         </CardContent>
       </Card>
     </div>

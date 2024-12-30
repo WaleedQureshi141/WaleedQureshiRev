@@ -1,40 +1,39 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { AddTicketSchema } from "../../schemas/add-ticket-schema";
-import { reimbInstance } from "@/lib/axios-config";
+import { TicketUpdateSchema } from "../../schemas/update-reimb-schema";
+import { reimbAdminInstance } from "@/lib/axios-config";
 import { toast } from "sonner";
-import { useRouter } from "@tanstack/react-router";
 
-export function useAddTicket()
+export function useReimbUpdate()
 {
     const queryClient = useQueryClient();
-    const router = useRouter();
 
     return useMutation(
         {
-            mutationFn: async (values: AddTicketSchema) =>
+            mutationFn: async (values: TicketUpdateSchema) =>
             {
+                const {id, status} = values;
                 const token = "Bearer " + queryClient.getQueryData(["auth"])
-                console.log(token);
-                const res = await reimbInstance.post("/add", values, 
-                    {headers: 
+                // console.log(token);
+                const res = await reimbAdminInstance.patch(`/${id}/${status}`, {},
+                    {
+                        headers:
                         {
                             "withCredentials" : true,
                             "Authorization" : token,
                             "Content-Type": "application/json",
                         }
-                    });
-                console.log(res.data);
+                    }
+                );
                 return res.data;
             },
             onSuccess: () =>
             {
+                toast.success("REIMBURSEMENT UPDATED");
                 queryClient.invalidateQueries(
                     {
-                        queryKey: ["user-reimbs"]
+                        queryKey: ["pending-reimbs"]
                     }
-                );
-                toast.message("Ticket Added");
-                router.navigate({to:"/reimb/reimb-table"});
+                )
             }
         }
     )

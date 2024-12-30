@@ -28,6 +28,17 @@ export function useLogin()
                 // console.log(queryClient.getQueryData(["auth"]));
                 toast.message("Logged In");
 
+                // const {data} = useUserInfo();
+
+                // if (data?.role === "USER")
+                // {
+                //     router.navigate({to: "/admin/all-users"});
+                // }
+                // else if (data?.role === "ADMIN")
+                // {
+                //     router.navigate({to: "/reimb/reimb-table"});
+                // }
+
                 router.navigate({to: "/auth/checkpoint"});
             },
         }

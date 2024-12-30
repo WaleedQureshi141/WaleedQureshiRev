@@ -1,7 +1,6 @@
 import { DataTable } from "@/components/ui/data-table";
 import { useUserTickets } from "./hooks/use-user-tickets";
-import { reimbColumns, Reimbs } from "./column-defs/user-tickets-def";
-import { Button } from "@/components/ui/button";
+import { reimbColumns } from "./column-defs/user-tickets-def";
 
 export function UserTicketsTable ()
 {

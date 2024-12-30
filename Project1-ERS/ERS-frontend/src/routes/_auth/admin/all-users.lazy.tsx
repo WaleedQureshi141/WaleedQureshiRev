@@ -1,4 +1,6 @@
-import { AllUsersTable } from '@/features/admin/components/all-users-table'
+import { DataTable } from '@/components/ui/data-table';
+import { allUsersColumns } from '@/features/admin/column-defs/all-users-defs';
+import { useAllUsers } from '@/features/admin/hooks/useAllUsers';
 import { createLazyFileRoute } from '@tanstack/react-router'
 
 export const Route = createLazyFileRoute('/_auth/admin/all-users')({
@@ -6,9 +8,11 @@ export const Route = createLazyFileRoute('/_auth/admin/all-users')({
 })
 
 function RouteComponent() {
-  return (
-    <div>
-      <AllUsersTable />
-    </div>
-  )
+  const {data} = useAllUsers();
+        
+    return (
+      <div className="container mx-auto py-10">
+          <DataTable columns={allUsersColumns} data={data || []}/>
+      </div>
+    )
 }
