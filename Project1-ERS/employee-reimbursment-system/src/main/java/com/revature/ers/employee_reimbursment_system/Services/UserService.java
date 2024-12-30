@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.revature.ers.employee_reimbursment_system.DTOs.UsersDTO;
 import com.revature.ers.employee_reimbursment_system.Models.AuthenticationResponse;
+import com.revature.ers.employee_reimbursment_system.Models.Role;
 import com.revature.ers.employee_reimbursment_system.Models.User;
 import com.revature.ers.employee_reimbursment_system.Repositories.RoleRepo;
 import com.revature.ers.employee_reimbursment_system.Repositories.UserRepo;
@@ -123,11 +124,17 @@ public class UserService
     // patch: change USER to ADMIN
     // only accessible to ADMIN
     // will only implement after all other functionality is complete
-    public User setAdminRole(int id)
+    public String setAdminRole(int id)
     {
+        Role prevRole = userRepo.findById(id).get().getRole();
+        if (prevRole.getRoleId() == 1)
+        {
+            return "CONFLICT";
+        }
         User user = userRepo.findById(id).get();
         user.setRole(roleRepo.findById(1).get());
-        return userRepo.save(user);
+        userRepo.save(user);
+        return "OK";
     }
 
     // delete: delete a user

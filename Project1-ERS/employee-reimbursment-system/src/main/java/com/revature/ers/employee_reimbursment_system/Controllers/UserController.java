@@ -61,6 +61,12 @@ public class UserController
         return new ResponseEntity<>(userService.login(user), HttpStatus.OK);
     }
 
+    @PostMapping("/auth/logout")
+    public ResponseEntity<String> logout()
+    {
+        return new ResponseEntity<>(null, HttpStatus.OK);
+    }
+
     @GetMapping("/admin/users")
     public ResponseEntity<List<UsersDTO>> getAllUsers()
     {
@@ -75,9 +81,14 @@ public class UserController
     
 
     @PatchMapping("/admin/setadmin/{id}")
-    public ResponseEntity<User> setAdminRole(@PathVariable int id)
+    public ResponseEntity<String> setAdminRole(@PathVariable int id)
     {
-        return new ResponseEntity<>(userService.setAdminRole(id), HttpStatus.OK);
+        if (userService.setAdminRole(id).equals("CONFLICT"))
+        {
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+
+        return new ResponseEntity<>("ROLE UPDATED", HttpStatus.OK);
     }
 
     @DeleteMapping("/admin/delete/{id}")

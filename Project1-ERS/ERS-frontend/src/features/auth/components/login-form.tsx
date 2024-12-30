@@ -30,8 +30,9 @@ export function LoginForm()
     }
  
     return (
-        <div className="flex h-screen justify-center items-center bg-gray-600">
-            <Card className="w-[350px] dark text-white shadow-lg">
+        <div className="flex h-screen justify-between items-center bg-gray-600 text-white">
+            <h1 className="font-bold text-[50px] ml-32">EMPLOYEE REIMBURSEMENT SERVICE</h1>
+            <Card className="w-[350px] dark text-white shadow-lg mr-16">
                 <CardHeader>
                     <CardTitle>LOGIN</CardTitle>
                     <CardDescription>Enter Your Login Information</CardDescription>

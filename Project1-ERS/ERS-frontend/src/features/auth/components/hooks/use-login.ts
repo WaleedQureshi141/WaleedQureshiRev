@@ -41,6 +41,10 @@ export function useLogin()
 
                 router.navigate({to: "/auth/checkpoint"});
             },
+            onError: () =>
+            {
+                toast.error("INCORRECT CREDENTIALS");
+            }
         }
     )
 }

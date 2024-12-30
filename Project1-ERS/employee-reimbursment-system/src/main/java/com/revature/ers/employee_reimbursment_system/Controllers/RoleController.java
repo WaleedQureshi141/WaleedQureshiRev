@@ -22,5 +22,4 @@ public class RoleController
     {        
         return roleService.addRole(role);
     }
-    
 }

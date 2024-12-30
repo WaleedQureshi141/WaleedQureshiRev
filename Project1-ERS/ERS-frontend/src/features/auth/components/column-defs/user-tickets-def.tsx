@@ -1,9 +1,8 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { DataTableColumnHeader } from "@/components/ui/data-table-column-header"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { ColumnDef } from "@tanstack/react-table"
+import { ArrowUpDown } from "lucide-react"
 
 export type Reimbs = 
 {
@@ -25,9 +24,17 @@ export const reimbColumns: ColumnDef<Reimbs>[] =
     },
     {
         accessorKey: "status",
-        header: ({ column }) => (
-            <DataTableColumnHeader column={column} title="STATUS" />
-        ),
-        enableSorting: true,
+        header: ({ column }) => 
+        {
+            return (
+              <Button
+                variant="ghost"
+                onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+              >
+                STATUS
+                <ArrowUpDown className="ml-2 h-4 w-4" />
+              </Button>
+            )
+        },
     },
 ]
